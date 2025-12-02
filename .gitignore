@@ -1,1 +1,5 @@
 day*[0-9].txt
+hidden.py
+__pycache__
+*.pyc
+*.egg-info
