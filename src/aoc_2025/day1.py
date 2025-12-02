@@ -56,11 +56,11 @@ for turn in input_text:
     new_pos = pos + (dir * clicks)
 
     # Get the hundreds counter of the higher/lower position
-    # and count hundreds between them 
-    # e.g. 5-counts between (170, -320) 
-    high_00s = (max(pos, new_pos) // total)
+    # and count hundreds between them
+    # e.g. 5-counts between (170, -320)
+    high_00s = max(pos, new_pos) // total
     low_00s = math.ceil(min(pos, new_pos) / total)
-    count = high_00s - low_00s + 1 
+    count = high_00s - low_00s + 1
     if not new_pos % total:
         count -= 1
     counter += count

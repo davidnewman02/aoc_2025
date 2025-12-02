@@ -10,9 +10,8 @@ def part_1(input_text):
         end = int(line.split("-")[1])
         for i in range(start, end + 1):
             i = str(i)
-            if i[:len(i)//2] == i[len(i)//2:]:
+            if i[: len(i) // 2] == i[len(i) // 2 :]:
                 cnt += int(i)
-
 
     return cnt
 
@@ -21,12 +20,10 @@ print("Part 1:", part_1(input_text))
 
 
 def is_valid(i):
-    for st in range(len(i)):
-        for end in range(st+1, len(i)):
-            if not len(i) % (end - st):
-                substr = i[st:end]
-                if substr * int(len(i) / len(substr)) == i:
-                    return True
+    for end in range(1, len(i)):
+        if not len(i) % end:
+            if i[:end] * (len(i) // end) == i:
+                return True
 
 
 def part_2(input_text):
@@ -38,5 +35,6 @@ def part_2(input_text):
             if is_valid(str(i)):
                 cnt += i
     return cnt
+
 
 print("Part 2:", part_2(input_text))
