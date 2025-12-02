@@ -20,7 +20,7 @@ print("Part 1:", part_1(input_text))
 
 
 def is_valid(i):
-    for end in range(1, len(i)):
+    for end in range(1, (len(i) // 2) + 1):
         if not len(i) % end:
             if i[:end] * (len(i) // end) == i:
                 return True
