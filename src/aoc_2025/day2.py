@@ -24,6 +24,7 @@ def is_valid(i):
         if not len(i) % end:
             if i[:end] * (len(i) // end) == i:
                 return True
+    return False
 
 
 def part_2(input_text):

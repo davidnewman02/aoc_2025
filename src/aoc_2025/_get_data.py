@@ -17,8 +17,7 @@ def get_data(day, force=False):
         response.raise_for_status()
         out_pth.write_text(response.content.decode())
         (out_pth.parent / f"day{day}_ex.txt").touch()
-    else:
-        print(f"File already exists: {out_pth}")
 
 
-get_data(day=2)
+for i in range(1, 13):
+    get_data(day=i)
