@@ -19,5 +19,11 @@ def get_data(day, force=False):
         (out_pth.parent / f"day{day}_ex.txt").touch()
 
 
-for i in range(1, 13):
-    get_data(day=i)
+for day in range(1, 13):
+    try:
+        get_data(day=day)
+    except HTTPError as e:
+        if e.response.status_code == 404: 
+            print(f"Good luck on day {day - 1}!")
+            break
+        raise
