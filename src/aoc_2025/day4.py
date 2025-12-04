@@ -36,17 +36,13 @@ print("Part 1:", part_1(input_arr))
 
 
 def clear_rolls(arr):
-    new_arr = np.zeros(arr.shape)
     for pos in np.argwhere(arr == 1):
         if not arr[*pos] == 1:
             continue
         neighbours = get_neighbours(arr, pos)
-        if neighbours.sum() > 4:
-            new_arr[*pos] = 1
-        else:
+        if neighbours.sum() <= 4:
             arr[*pos] = 0
-
-    return new_arr
+    return arr
 
 
 def part_2(arr):
