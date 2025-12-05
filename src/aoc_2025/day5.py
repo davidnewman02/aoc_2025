@@ -19,16 +19,14 @@ def parse_input(input_text):
     return tree, ingreds
 
 
-def part_1_tree(tree, ingreds):
+def part_1(tree, ingreds):
     return sum([1 if tree[i] else 0 for i in ingreds])
-
-
-tree, ingreds = parse_input(input_text)
-print("Part 1:", part_1_tree(tree, ingreds))
 
 
 def part_2(tree):
     return sum([(t.end - t.begin) for t in tree])
 
 
+tree, ingreds = parse_input(input_text)
+print("Part 1:", part_1(tree, ingreds))
 print("Part 2:", part_2(tree))
