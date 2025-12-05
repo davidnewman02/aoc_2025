@@ -11,30 +11,24 @@ def parse_input(input_text):
     for line in input_text:
         if "-" in line:
             fields = line.split("-")
-            idx.append((int(fields[0]), int(fields[1])))
+            idx.append(Interval(int(fields[0]), int(fields[1]) + 1))
         elif line:
             ingreds.append(int(line))
-    return idx, ingreds
-
-
-def part_1(idx, ingreds):
-    cnt = 0
-    for ingred in ingreds:
-        for rng in idx:
-            if rng[0] <= ingred <= rng[1]:
-                cnt += 1
-                break
-    return cnt
-
-
-idx, ingreds = parse_input(input_text)
-print("Part 1:", part_1(idx, ingreds))
-
-
-def part_2(idx):
-    tree = IntervalTree(Interval(i[0], i[1] + 1) for i in idx)
+    tree = IntervalTree(idx)
     tree.merge_overlaps()
+    return tree, ingreds
+
+
+def part_1_tree(tree, ingreds):
+    return sum([1 if tree[i] else 0 for i in ingreds])
+
+
+tree, ingreds = parse_input(input_text)
+print("Part 1:", part_1_tree(tree, ingreds))
+
+
+def part_2(tree):
     return sum([(t.end - t.begin) for t in tree])
 
 
-print("Part 2:", part_2(idx))
+print("Part 2:", part_2(tree))
