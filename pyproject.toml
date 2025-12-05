@@ -7,8 +7,9 @@ name = "aoc_2025"
 version = "0.1.1"
 requires-python = ">=3.10"
 dependencies = [
-    "requests",
+    "intervaltree",
     "numpy",
+    "requests"
 ]
 
 [tool.setuptools.packages.find]
