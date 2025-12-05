@@ -6,15 +6,13 @@ input_text = Path("input_data/day5.txt").read_text().strip().split("\n")
 
 
 def parse_input(input_text):
-    idx = []
+    tree = IntervalTree()
     ingreds = []
     for line in input_text:
         if "-" in line:
-            fields = line.split("-")
-            idx.append(Interval(int(fields[0]), int(fields[1]) + 1))
+            tree.addi(int(line.split("-")[0]), int(line.split("-")[1]) + 1)
         elif line:
             ingreds.append(int(line))
-    tree = IntervalTree(idx)
     tree.merge_overlaps()
     return tree, ingreds
 
