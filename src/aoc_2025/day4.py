@@ -1,7 +1,7 @@
 import numpy as np
 from pathlib import Path
 
-input_text = Path("input_data/day4.txt").read_text().strip().split("\n")
+input_text = Path("input_data/day4.ex.txt").read_text().strip().split("\n")
 
 
 def parse_input(input_text):

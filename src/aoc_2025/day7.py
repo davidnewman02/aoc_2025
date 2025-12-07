@@ -1,6 +1,6 @@
 from pathlib import Path
 
-input_text = Path("input_data/day7.txt").read_text().split("\n")
+input_text = Path("input_data/day7.ex.txt").read_text().split("\n")
 
 
 def part_1(input_text):

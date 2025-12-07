@@ -2,7 +2,7 @@ from pathlib import Path
 
 import numpy as np
 
-input_text = Path("input_data/day6.txt").read_text().split("\n")
+input_text = Path("input_data/day6.ex.txt").read_text().split("\n")
 if not input_text[-1]:
     input_text.pop(-1)
 
@@ -32,10 +32,6 @@ def part_1(arr, ops):
     for col, op in zip(arr.T, ops):
         cnt += accumulate(col, op)
     return cnt
-
-
-arr, ops = parse_input(input_text)
-print("Part 1:", part_1(arr, ops))
 
 
 def part_2(input_text):

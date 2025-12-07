@@ -1,7 +1,7 @@
 import math
 from pathlib import Path
 
-input_text = Path("input_data/day1.txt").read_text().strip().split("\n")
+input_text = Path("input_data/day1.ex.txt").read_text().strip().split("\n")
 
 
 ## Part 1

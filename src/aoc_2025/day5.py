@@ -2,6 +2,8 @@ from pathlib import Path
 
 from intervaltree import IntervalTree
 
+input_text = Path("input_data/day5.ex.txt").read_text().strip().split("\n")
+
 
 def parse_input(input_text):
     tree = IntervalTree()
@@ -23,7 +25,6 @@ def part_2(tree):
     return sum([(t.end - t.begin) for t in tree])
 
 
-input_text = Path("input_data/day5.txt").read_text().strip().split("\n")
 tree, ingreds = parse_input(input_text)
 print("Part 1:", part_1(tree, ingreds))
 print("Part 2:", part_2(tree))
