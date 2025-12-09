@@ -20,3 +20,10 @@ def bounds_check(pos, arr):
     assert len(pos) == len(arr.shape), f"Shape mismatch: {pos} vs. {arr.shape}"
     pos = np.array(pos)
     return (0 <= pos).all() & (pos < arr.shape).all()
+
+
+def print_array(arr, ints=True, delim=""):
+    if ints:
+        arr = arr.astype(int)
+    for line in arr:
+        print(delim.join(map(str, line)).replace("0", "."))

@@ -11,6 +11,7 @@ def parse_coords(input_text):
         coords.append(tuple(map(int, line.split(","))))
     return coords
 
+
 def conn_list(coords):
     dists = {}
     for i in range(len(coords) - 1):
