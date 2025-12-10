@@ -29,15 +29,21 @@ def part_1(input_text):
         min_x, max_x = min(x0, x1) + 0.5, max(x0, x1) - 0.5
         min_y, max_y = min(y0, y1) + 0.5, max(y0, y1) - 0.5
 
-        for (v_x, min_v_y, max_v_y), (h_y, min_h_x, max_h_x) in zip(v_edges, h_edges):
+        for v_x, min_v_y, max_v_y in v_edges:
             ve_in_x = min_x < v_x < max_x
             yends = min_v_y < min_y < max_v_y or min_v_y < max_y < max_v_y
-            he_in_y = min_y < h_y < max_y
-            xends = min_h_x < min_x < max_h_x or min_h_x < max_x < max_h_x
-
-            if (ve_in_x and yends) or (he_in_y and xends):
+            if ve_in_x and yends:
                 contained = False
                 break
+
+        if contained:
+            for h_y, min_h_x, max_h_x in h_edges:
+                he_in_y = min_y < h_y < max_y
+                xends = min_h_x < min_x < max_h_x or min_h_x < max_x < max_h_x
+
+                if he_in_y and xends:
+                    contained = False
+                    break
         if contained:
             p2_area = area
 
