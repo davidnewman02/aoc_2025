@@ -55,12 +55,15 @@ def part_2(machines):
         # For each light, the sum of contributions from all switches must match its joltage target.
         # Add these as target constraints
         for i in range(n_lights):
-            prob += pulp.lpSum(buttons[j, i] * x[j] for j in range(n_switches)) == jolts[i]
+            prob += (
+                pulp.lpSum(buttons[j, i] * x[j] for j in range(n_switches)) == jolts[i]
+            )
 
         prob.solve(pulp.PULP_CBC_CMD(msg=False))
         presses = sum([pulp.value(x[j]) for j in range(n_switches)])
         cnt += presses
     return int(cnt)
+
 
 machines = parse_text(input_text)
 print("Part 1:", part_1(machines))
